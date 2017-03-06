@@ -1,6 +1,6 @@
 /*
  *  Copyright (C) 2010-2015 Karl R. Wurst
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 3 of the License, or
@@ -16,7 +16,7 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
  */
 
-package edu.worcester.cs.kwurst.cs242;
+package sirtommy;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -55,7 +55,7 @@ public class SirTommy {
      */
     public SirTommy() throws IOException {
         /* Console code from https://stackoverflow.com/a/9680496 starts... */
-        
+
         PipedInputStream inPipe = new PipedInputStream();
         PipedInputStream outPipe = new PipedInputStream();
 
@@ -70,18 +70,18 @@ public class SirTommy {
         //frame.setSize(1000, 1000);
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.setVisible(true);
-        
+
         /* Console code from https://stackoverflow.com/a/9680496 ends... */
-        
+
         JScrollPane pane = new JScrollPane(console(outPipe, inWriter),JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         frame.setSize(1000, 1000);
         frame.getContentPane().add(pane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        
+
         System.out.println(" Sir Tommy Solitaire. For rules see: https://en.wikipedia.org/wiki/Sir_Tommy\n");
-        
+
         deck = new LinkedList<Card>(Card.newDeck());
         foundation = new LinkedList[4];
         wastePile = new LinkedList[4];
@@ -99,7 +99,7 @@ public class SirTommy {
     /* Console code from https://stackoverflow.com/a/9680496 */
     public static JTextArea console(final InputStream out, final PrintWriter in) {
         final JTextArea area = new JTextArea();
-        
+
         // handle "System.out"
         new SwingWorker<Void, String>() {
             @Override protected Void doInBackground() throws Exception {
@@ -119,9 +119,9 @@ public class SirTommy {
                 char c = e.getKeyChar();
                 if (c == KeyEvent.VK_ENTER) {
                     in.println(line);
-                    line.setLength(0); 
-                } else if (c == KeyEvent.VK_BACK_SPACE) { 
-                    line.setLength(line.length() - 1); 
+                    line.setLength(0);
+                } else if (c == KeyEvent.VK_BACK_SPACE) {
+                    line.setLength(line.length() - 1);
                 } else if (!Character.isISOControl(c)) {
                     line.append(e.getKeyChar());
                 }
@@ -130,9 +130,9 @@ public class SirTommy {
 
         return area;
     }
-    
+
     /**
-     * Displays the foundations, deck, and waste piles. 
+     * Displays the foundations, deck, and waste piles.
      */
     public void displayTableau() {
         System.out.print("\t\t");
@@ -176,7 +176,7 @@ public class SirTommy {
             }
 
             // Check to see if the game is over (either by winning, or quitting.)
-            gameOver = checkForGameOver(gameOver);			
+            gameOver = checkForGameOver(gameOver);
         }
     }
 
@@ -222,11 +222,11 @@ public class SirTommy {
                 System.out.print(" " + src + " is not a valid waste pile.\n");
                 return null;
             } else {
-                srcPile = wastePile[pileNum]; 
+                srcPile = wastePile[pileNum];
             }
         } else {
             System.out.print(" " + src + " is not a valid pile to move from. Please choose another.\n");
-            return null;	
+            return null;
         }
         // check that the pile is not empty
         if (srcPile.isEmpty()) {
@@ -258,10 +258,10 @@ public class SirTommy {
             } else {
                 // try to move the card
                 return putCardOnFoundation(srcPile, foundation[Integer.parseInt(dest.substring(1,2))]);
-            }	
+            }
         } else {
             System.out.print(" " + dest + " is not a valid pile to move to. Please choose another.\n");
-            return false;	
+            return false;
         }
     }
 
@@ -296,7 +296,7 @@ public class SirTommy {
     /**
      * Start the game
      * @param args command-line arguments (not used)
-     * @throws IOException 
+     * @throws IOException
      */
     public static void main(String[] args) throws IOException {
         SirTommy game = new SirTommy();

@@ -1,0 +1,23 @@
+Compile the code.
+-What Maven command did you use?
+mvn package
+mvn test
+-Where does Maven put the .class files?
+-What other directories were created? What is in them?
+-Run the tests.
+-What Maven command did you use?
+-Where does Maven put the .class files?
+-What other directories were created? What is in them?
+-Make a jar file.
+-What Maven command did you use?
+-Where does Maven put the .jar file?
+-What other directories were created? What is in them?
+-Clean up the project.
+-What Maven command did you use?
+-What changes were made to the directory structure?
+-Make a web site for the project.
+-What Maven command did you use?
+-Where does Maven put the site directory?
+-Open the web site in your browser. What file did you use?
+-What other directories were created? What is in them?
+-Was the code compiled for this target?
